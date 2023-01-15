@@ -1,0 +1,13 @@
+{
+  "primary": "tomato",
+  "secondary": "dodgerblue",
+  "black": "#000",
+  "white": "#fff",
+  "offwhite": "#f8f4f4",
+  "lightblue": "dodgerblue",
+  "lightyellow": "#ffe66d",
+  "lightgrey": "#EEEEEE",
+  "mediumgrey": "#6e6969",
+  "danger": "#ff5252",
+  "darkgrey": "#0C0C0C"
+}
