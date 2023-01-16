@@ -2,7 +2,7 @@ import { create } from "apisauce";
 import cache from "../utility/cache";
 
 const apiClient = create({
-  baseURL: "http://127.0.0.1:9000/api",
+  baseURL: "http://192.168.0.29:9000/api",
 });
 
 const get = apiClient.get;
@@ -10,7 +10,6 @@ const get = apiClient.get;
 // redefining the get function
 apiClient.get = async (url, params, axiosConfig) => {
   const response = await get(url, params, axiosConfig);
-  console.log({ response });
   if (response.ok) {
     cache.store(url, response.data);
     return response;
