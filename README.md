@@ -1,6 +1,8 @@
 # DoneWithIt
 
-
+## Make it work
+- Open DoneWithIt/DoneWithIt for front, run 'npm start', change [baseURL: "http://10.12.175.148:9000/api"] in app/api/client.js to whatever address comes up through 'ipconfig' command in powershell, attribute 'Adresse IPv44
+- Open DoneWithIt/Backend/DoneWithIt-Back run 'node index.js', make sure port is correct (9000). Ip address should be correct by default.
 
 ## Getting started
 
