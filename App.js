@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { useNetInfo } from "@react-native-community/netinfo";
 
@@ -10,13 +10,19 @@ import OfflineNotice from "./app/components/OfflineNotice";
 
 export default function App() {
   const netInfo = useNetInfo();
+  const [loggedIn, setLoggedIn] = useState(false);
+
   return (
     <Screen>
       {netInfo.isInternetReachable === false && netInfo.type !== "unknown" && (
         <OfflineNotice />
       )}
       <NavigationContainer theme={navigationTheme}>
-        <AuthNavigator />
+        {loggedIn ? (
+          <AppNavigator />
+        ) : (
+          <AuthNavigator onLogin={() => setLoggedIn(true)} />
+        )}
       </NavigationContainer>
     </Screen>
   );

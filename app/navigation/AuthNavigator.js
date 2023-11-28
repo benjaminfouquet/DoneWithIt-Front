@@ -10,20 +10,22 @@ import navigationTheme from "./navigationTheme";
 
 const Stack = createStackNavigator();
 
-const StackNavigator = () => (
+const StackNavigator = ({ onLogin }) => (
   <Stack.Navigator
     screenOptions={{
       headerShown: false,
     }}
   >
     <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
-    <Stack.Screen name="LoginScreen" component={LoginScreen} />
+    <Stack.Screen name="LoginScreen">
+      {() => <LoginScreen onLogin={onLogin} />}
+    </Stack.Screen>
     <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
   </Stack.Navigator>
 );
 
-export default function AuthNavigator() {
-  return <StackNavigator />;
+export default function AuthNavigator({ onLogin }) {
+  return <StackNavigator onLogin={onLogin} />;
 }
 
 const styles = StyleSheet.create({});
