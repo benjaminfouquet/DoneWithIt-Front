@@ -26,7 +26,7 @@ export default function ListingScreen({ navigation }) {
     <Screen style={styles.screen}>
       {error && (
         <>
-          <AppText>Could'nt retrieve the listings.</AppText>
+          <AppText>Couldn't retrieve the listings.</AppText>
           <AppButton title="Retry" onPress={loadListings} />
         </>
       )}
