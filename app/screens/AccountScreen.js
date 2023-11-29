@@ -1,5 +1,5 @@
 import { StyleSheet, FlatList, View } from "react-native";
-import React from "react";
+import React, { useContext } from "react";
 
 import Screen from "../components/Screen";
 import ListItem from "../components/list/ListItem";
@@ -7,8 +7,17 @@ import colors from "../config/colors.json";
 import Icon from "../components/Icon";
 import ListItemSeparator from "../components/list/ListItemSeparator";
 import routes from "../navigation/routes";
+import AuthContext from "../auth/context";
+import authStorage from "../auth/storage";
 
 export default function AccountScreen({ title, subtitle, image, navigation }) {
+  const { user, setUser } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    setUser(null);
+    authStorage.removeToken();
+  };
+
   const accountFields = [
     {
       onPress: () => console.log("pressed"),
@@ -26,13 +35,15 @@ export default function AccountScreen({ title, subtitle, image, navigation }) {
 
   return (
     <Screen style={styles.screen}>
-      <ListItem
-        title="Ben Fouquet"
-        subtitle="BG international"
-        image={require("../assets/favicon.png")}
-        style={styles.listItem}
-      />
-      <View style={{ marginVertical: 20 }}>
+      <View style={styles.container}>
+        <ListItem
+          title={user.name}
+          subtitle={user.email}
+          image={require("../assets/favicon.png")}
+          style={styles.listItem}
+        />
+      </View>
+      <View style={styles.container}>
         <FlatList
           data={accountFields}
           keyExtractor={(message) => message.title}
@@ -54,7 +65,7 @@ export default function AccountScreen({ title, subtitle, image, navigation }) {
         />
       </View>
       <ListItem
-        onPress={() => console.log("pressed")}
+        onPress={handleLogOut}
         title={"Log out"}
         style={styles.listItem}
         IconComponent={
@@ -72,4 +83,7 @@ export default function AccountScreen({ title, subtitle, image, navigation }) {
 const styles = StyleSheet.create({
   screen: { backgroundColor: colors.offwhite },
   listItem: { backgroundColor: colors.white },
+  container: {
+    marginVertical: 20,
+  },
 });
