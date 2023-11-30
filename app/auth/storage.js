@@ -1,5 +1,6 @@
 import * as SecureStore from "expo-secure-store";
 import jwtDecode from "jwt-decode";
+import "core-js/stable/atob"; // <- polyfill here
 
 const storeToken = async (authToken) => {
   try {
