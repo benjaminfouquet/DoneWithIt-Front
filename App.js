@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { useNetInfo } from "@react-native-community/netinfo";
-import { jwtDecode } from "jwt-decode";
-import "core-js/stable/atob"; // <- polyfill here
 import * as SplashScreen from "expo-splash-screen";
 
 import AuthNavigator from "./app/navigation/AuthNavigator";
