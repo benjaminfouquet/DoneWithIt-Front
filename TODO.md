@@ -1,0 +1,1 @@
+- Solve flickering of screen on Login, Register, Refresh: likely due to SplashScreen in App.js
